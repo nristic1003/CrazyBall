@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 {
 
     public Text FinalScore;
-    public GameObject gameOverPanel, scorePanel;
+    public GameObject gameOverPanel, scorePanel , pausePanel, tube;
 
   public void PlayAgain()
     {
@@ -25,6 +25,23 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void ContinueGame()
+    {
+        Time.timeScale = 1f;
+        tube.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        if(!gameOverPanel.activeSelf)
+        {
+            Time.timeScale = 0f;
+            tube.SetActive(false);
+            pausePanel.SetActive(true);
+        }
+       
+    }
 
     public void SetFinalScore()
     {

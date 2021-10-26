@@ -19,7 +19,7 @@ public class Axe : MonoBehaviour
 
     private void Start()
     {
-        y = Random.RandomRange(-5f, 5f);
+        y = Random.RandomRange(-3f, 3f);
         x = transform.position.x;
     }
 
@@ -36,11 +36,11 @@ public class Axe : MonoBehaviour
         if (collision.tag == "Ball")
         {
             Score.instance.notAlive();
-           // CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             Instantiate(prefab, transform.position, Quaternion.identity);
             GameObject.Find("GameController").GetComponent<GameController>().SetFinalScore();
             Destroy(collision.gameObject);
-            
+            CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+
 
         }
     }
